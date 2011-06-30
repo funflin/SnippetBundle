@@ -3,7 +3,7 @@
 namespace Facebes\SnipperBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Facebes\SnipperBundle\Entity\Snipper
@@ -128,8 +128,17 @@ class Snipper
 
     public function __construct()
     {   
-    	$this->tags = new ArrayCollection();
+      	$this->tags = new ArrayCollection();
     }
 
 
+    /**
+     * Add tags
+     *
+     * @param Facebes\SnipperBundle\Entity\Tag $tags
+     */
+    public function addTags(\Facebes\SnipperBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+    }
 }
