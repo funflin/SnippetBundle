@@ -49,10 +49,24 @@ class Snipper
      */
     private $tags;
 
-    public function getTags()
-    {
-        return $this->tags;
-    }	
+    /**
+     * @ORM\Column(type="datetime", name="created_at")
+     *
+     * @var DateTime $createdAt
+     */
+    protected $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", name="updated_at")
+     *
+     * @var DateTime $updatedAt
+     */
+    protected $updatedAt;
+
+
+
+
+
 
 
 
@@ -125,12 +139,17 @@ class Snipper
     {
         return $this->code;
     }
+   
+    /**
+     * Get Tags
+     *
+     * @return ArrayCollection Facebes\SnipperBundle\Entity\Tag
+     */
 
-    public function __construct()
-    {   
-      	$this->tags = new ArrayCollection();
-    }
-
+    public function getTags()
+    {
+        return $this->tags;
+    }	
 
     /**
      * Add tags
@@ -141,4 +160,36 @@ class Snipper
     {
         $this->tags[] = $tags;
     }
+
+  
+    /**
+     * Set la fecha de creacion
+     *
+     * @return DateTime A DateTime object
+     *
+     */
+    public function getCreatedAt()
+    {
+      return $this->createdAt;
+    }
+
+
+
+    /**
+     * Set la fecha de creacion actualizacion
+     *
+     * @return DateTime A DateTime object
+     */
+    public function getUpdatedAt()
+    {
+      return $this->updatedAt;
+    }
+
+
+
+    public function __construct()
+    {   
+      	$this->tags = new ArrayCollection();
+    }
+
 }
