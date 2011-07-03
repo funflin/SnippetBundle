@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Snipper
 {
@@ -57,16 +58,11 @@ class Snipper
     protected $createdAt;
 
     /**
-     * @ORM\Column(type="datetime", name="updated_at")
+     * @ORM\Column(type="datetime", name="updated_at", nullable="true")
      *
      * @var DateTime $updatedAt
      */
     protected $updatedAt;
-
-
-
-
-
 
 
 
@@ -185,11 +181,20 @@ class Snipper
       return $this->updatedAt;
     }
 
-
+    /**
+    *
+    *
+    * @ORM\PreUpdate
+    */
+    public function preUpdate()
+    {
+	$this->updatedAt = new \DateTime();
+    }
 
     public function __construct()
     {   
       	$this->tags = new ArrayCollection();
+	$this->createdAt = new \DateTime();	
     }
 
 }

@@ -7,6 +7,8 @@
             <th>Name</th>
             <th>Description</th>
             <th>Code</th>
+            <th>Createdat</th>
+            <th>Updatedat</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -17,6 +19,8 @@
             <td>{{ entity.name }}</td>
             <td>{{ entity.description }}</td>
             <td>{{ entity.code }}</td>
+            <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
             <td>
                 <ul>
                     <li>
