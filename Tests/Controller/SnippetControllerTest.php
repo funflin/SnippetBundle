@@ -1,10 +1,10 @@
 <?php
 
-namespace Facebes\SnipperBundle\Tests\Controller;
+namespace Facebes\SnippetBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class SnipperControllerTest extends WebTestCase
+class SnippetControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,13 +13,13 @@ class SnipperControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/snipper/');
+        $crawler = $client->request('GET', '/snippet/');
         $this->assertTrue(200 === $client->getResponse()->getStatusCode());
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'snipper[field_name]'  => 'Test',
+            'snippet[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class SnipperControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Edit')->form(array(
-            'snipper[field_name]'  => 'Foo',
+            'snippet[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

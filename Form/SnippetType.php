@@ -1,11 +1,11 @@
 <?php
 
-namespace Facebes\SnipperBundle\Form;
+namespace Facebes\SnippetBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class SnipperType extends AbstractType
+class SnippetType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Facebes\SnipperBundle\Entity;
+namespace Facebes\SnippetBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Facebes\SnipperBundle\Entity\Tag
+ * Facebes\SnippetBundle\Entity\Tag
  *
  * @ORM\Table()
  * @ORM\Entity
@@ -27,7 +27,7 @@ class Tag
      * @var string $name
      *
      * @ORM\Column(name="name", type="string", length=25)
-     * 
+     *
      */
     private $name;
 
@@ -42,9 +42,9 @@ class Tag
     * @ORM\OneToMany(targetEntity="Tag", mappedBy="parent")
     */
     private $children;
-    
+
     /**
-    * @ORM\ManyToOne(targetEntity="Tag", inversedBy="children") 
+    * @ORM\ManyToOne(targetEntity="Tag", inversedBy="children")
     */
     private $parent;
 
@@ -117,7 +117,7 @@ class Tag
     {
         return $this->description;
     }
-    
+
     public function __toString()
     {
 	return $this->getName();
@@ -131,9 +131,9 @@ class Tag
     /**
      * Add children
      *
-     * @param Facebes\SnipperBundle\Entity\Tag $children
+     * @param Facebes\SnippetBundle\Entity\Tag $children
      */
-    public function addChildren(\Facebes\SnipperBundle\Entity\Tag $children)
+    public function addChildren(\Facebes\SnippetBundle\Entity\Tag $children)
     {
         $this->children[] = $children;
     }
@@ -141,7 +141,7 @@ class Tag
     /**
      * Get children
      *
-     * @return Doctrine\Common\Collections\Collection $children 
+     * @return Doctrine\Common\Collections\Collection $children
      */
     public function getChildren()
     {

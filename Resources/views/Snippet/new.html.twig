@@ -1,6 +1,6 @@
-<h1>Snipper creation</h1>
+<h1>Snippet creation</h1>
 
-<form action="{{ path('snipper_create') }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('snippet_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <p>
         <button type="submit">Create</button>
@@ -9,7 +9,7 @@
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('snipper') }}">
+        <a href="{{ path('snippet') }}">
             Back to the list
         </a>
     </li>

@@ -1,4 +1,4 @@
-<h1>Snipper list</h1>
+<h1>Snippet list</h1>
 
 <table class="records_list">
     <thead>
@@ -14,7 +14,7 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('snipper_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+            <td><a href="{{ path('snippet_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
             <td>{{ entity.description }}</td>
             <td>{{ entity.createdAt|date('Y-m-d') }}</td>
             <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
@@ -26,10 +26,10 @@
 	    <td>
                 <ul>
                     <li>
-                        <a href="{{ path('snipper_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('snippet_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('snipper_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('snippet_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
             </td>
@@ -40,7 +40,7 @@
 
 <ul>
     <li>
-        <a href="{{ path('snipper_new') }}">
+        <a href="{{ path('snippet_new') }}">
             Create a new entry
         </a>
     </li>

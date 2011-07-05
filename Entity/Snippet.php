@@ -1,18 +1,18 @@
 <?php
 
-namespace Facebes\SnipperBundle\Entity;
+namespace Facebes\SnippetBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Facebes\SnipperBundle\Entity\Snipper
+ * Facebes\SnippetBundle\Entity\Snippet
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class Snipper
+class Snippet
 {
     /**
      * @var integer $id
@@ -135,29 +135,29 @@ class Snipper
     {
         return $this->code;
     }
-   
+
     /**
      * Get Tags
      *
-     * @return ArrayCollection Facebes\SnipperBundle\Entity\Tag
+     * @return ArrayCollection Facebes\SnippetBundle\Entity\Tag
      */
 
     public function getTags()
     {
         return $this->tags;
-    }	
+    }
 
     /**
      * Add tags
      *
-     * @param Facebes\SnipperBundle\Entity\Tag $tags
+     * @param Facebes\SnippetBundle\Entity\Tag $tags
      */
-    public function addTags(\Facebes\SnipperBundle\Entity\Tag $tags)
+    public function addTags(\Facebes\SnippetBundle\Entity\Tag $tags)
     {
         $this->tags[] = $tags;
     }
 
-  
+
     /**
      * Set la fecha de creacion
      *
@@ -192,9 +192,9 @@ class Snipper
     }
 
     public function __construct()
-    {   
+    {
       	$this->tags = new ArrayCollection();
-	$this->createdAt = new \DateTime();	
+	$this->createdAt = new \DateTime();
     }
 
 }

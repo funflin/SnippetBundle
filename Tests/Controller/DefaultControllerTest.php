@@ -1,6 +1,6 @@
 <?php
 
-namespace Facebes\SnipperBundle\Tests\Controller;
+namespace Facebes\SnippetBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

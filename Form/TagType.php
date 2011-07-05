@@ -1,6 +1,6 @@
 <?php
 
-namespace Facebes\SnipperBundle\Form;
+namespace Facebes\SnippetBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;

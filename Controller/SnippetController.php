@@ -1,50 +1,50 @@
 <?php
 
-namespace Facebes\SnipperBundle\Controller;
+namespace Facebes\SnippetBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Facebes\SnipperBundle\Entity\Snipper;
-use Facebes\SnipperBundle\Form\SnipperType;
+use Facebes\SnippetBundle\Entity\Snippet;
+use Facebes\SnippetBundle\Form\SnippetType;
 
 /**
- * Snipper controller.
+ * Snippet controller.
  *
- * @Route("/snipper")
+ * @Route("/snippet")
  */
-class SnipperController extends Controller
+class SnippetController extends Controller
 {
     /**
-     * Lists all Snipper entities.
+     * Lists all Snippet entities.
      *
-     * @Route("/", name="snipper")
+     * @Route("/", name="snippet")
      * @Template()
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('FacebesSnipperBundle:Snipper')->findAll();
+        $entities = $em->getRepository('FacebesSnippetBundle:Snippet')->findAll();
 
         return array('entities' => $entities);
     }
 
     /**
-     * Finds and displays a Snipper entity.
+     * Finds and displays a Snippet entity.
      *
-     * @Route("/{id}/show", name="snipper_show")
+     * @Route("/{id}/show", name="snippet_show")
      * @Template()
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('FacebesSnipperBundle:Snipper')->find($id);
+        $entity = $em->getRepository('FacebesSnippetBundle:Snippet')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Snipper entity.');
+            throw $this->createNotFoundException('Unable to find Snippet entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -56,15 +56,15 @@ class SnipperController extends Controller
     }
 
     /**
-     * Displays a form to create a new Snipper entity.
+     * Displays a form to create a new Snippet entity.
      *
-     * @Route("/new", name="snipper_new")
+     * @Route("/new", name="snippet_new")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Snipper();
-        $form   = $this->createForm(new SnipperType(), $entity);
+        $entity = new Snippet();
+        $form   = $this->createForm(new SnippetType(), $entity);
 
         return array(
             'entity' => $entity,
@@ -73,17 +73,17 @@ class SnipperController extends Controller
     }
 
     /**
-     * Creates a new Snipper entity.
+     * Creates a new Snippet entity.
      *
-     * @Route("/create", name="snipper_create")
+     * @Route("/create", name="snippet_create")
      * @Method("post")
-     * @Template("FacebesSnipperBundle:Snipper:new.html.twig")
+     * @Template("FacebesSnippetBundle:Snippet:new.html.twig")
      */
     public function createAction()
     {
-        $entity  = new Snipper();
+        $entity  = new Snippet();
         $request = $this->getRequest();
-        $form    = $this->createForm(new SnipperType(), $entity);
+        $form    = $this->createForm(new SnippetType(), $entity);
 
         if ('POST' === $request->getMethod()) {
             $form->bindRequest($request);
@@ -93,8 +93,8 @@ class SnipperController extends Controller
                 $em->persist($entity);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('snipper_show', array('id' => $entity->getId())));
-                
+                return $this->redirect($this->generateUrl('snippet_show', array('id' => $entity->getId())));
+
             }
         }
 
@@ -105,22 +105,22 @@ class SnipperController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Snipper entity.
+     * Displays a form to edit an existing Snippet entity.
      *
-     * @Route("/{id}/edit", name="snipper_edit")
+     * @Route("/{id}/edit", name="snippet_edit")
      * @Template()
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('FacebesSnipperBundle:Snipper')->find($id);
+        $entity = $em->getRepository('FacebesSnippetBundle:Snippet')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Snipper entity.');
+            throw $this->createNotFoundException('Unable to find Snippet entity.');
         }
 
-        $editForm = $this->createForm(new SnipperType(), $entity);
+        $editForm = $this->createForm(new SnippetType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -131,23 +131,23 @@ class SnipperController extends Controller
     }
 
     /**
-     * Edits an existing Snipper entity.
+     * Edits an existing Snippet entity.
      *
-     * @Route("/{id}/update", name="snipper_update")
+     * @Route("/{id}/update", name="snippet_update")
      * @Method("post")
-     * @Template("FacebesSnipperBundle:Snipper:edit.html.twig")
+     * @Template("FacebesSnippetBundle:Snippet:edit.html.twig")
      */
     public function updateAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('FacebesSnipperBundle:Snipper')->find($id);
+        $entity = $em->getRepository('FacebesSnippetBundle:Snippet')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Snipper entity.');
+            throw $this->createNotFoundException('Unable to find Snippet entity.');
         }
 
-        $editForm   = $this->createForm(new SnipperType(), $entity);
+        $editForm   = $this->createForm(new SnippetType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         $request = $this->getRequest();
@@ -160,7 +160,7 @@ class SnipperController extends Controller
                 $em->persist($entity);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('snipper_edit', array('id' => $id)));
+                return $this->redirect($this->generateUrl('snippet_edit', array('id' => $id)));
             }
         }
 
@@ -172,9 +172,9 @@ class SnipperController extends Controller
     }
 
     /**
-     * Deletes a Snipper entity.
+     * Deletes a Snippet entity.
      *
-     * @Route("/{id}/delete", name="snipper_delete")
+     * @Route("/{id}/delete", name="snippet_delete")
      * @Method("post")
      */
     public function deleteAction($id)
@@ -187,10 +187,10 @@ class SnipperController extends Controller
 
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getEntityManager();
-                $entity = $em->getRepository('FacebesSnipperBundle:Snipper')->find($id);
+                $entity = $em->getRepository('FacebesSnippetBundle:Snippet')->find($id);
 
                 if (!$entity) {
-                    throw $this->createNotFoundException('Unable to find Snipper entity.');
+                    throw $this->createNotFoundException('Unable to find Snippet entity.');
                 }
 
                 $em->remove($entity);
@@ -198,7 +198,7 @@ class SnipperController extends Controller
             }
         }
 
-        return $this->redirect($this->generateUrl('snipper'));
+        return $this->redirect($this->generateUrl('snippet'));
     }
 
     private function createDeleteForm($id)

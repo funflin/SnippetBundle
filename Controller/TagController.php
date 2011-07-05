@@ -1,13 +1,13 @@
 <?php
 
-namespace Facebes\SnipperBundle\Controller;
+namespace Facebes\SnippetBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Facebes\SnipperBundle\Entity\Tag;
-use Facebes\SnipperBundle\Form\TagType;
+use Facebes\SnippetBundle\Entity\Tag;
+use Facebes\SnippetBundle\Form\TagType;
 
 /**
  * Tag controller.
@@ -26,7 +26,7 @@ class TagController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('FacebesSnipperBundle:Tag')->findAll();
+        $entities = $em->getRepository('FacebesSnippetBundle:Tag')->findAll();
 
         return array('entities' => $entities);
     }
@@ -41,7 +41,7 @@ class TagController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('FacebesSnipperBundle:Tag')->find($id);
+        $entity = $em->getRepository('FacebesSnippetBundle:Tag')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Tag entity.');
@@ -77,7 +77,7 @@ class TagController extends Controller
      *
      * @Route("/create", name="tag_create")
      * @Method("post")
-     * @Template("FacebesSnipperBundle:Tag:new.html.twig")
+     * @Template("FacebesSnippetBundle:Tag:new.html.twig")
      */
     public function createAction()
     {
@@ -94,7 +94,7 @@ class TagController extends Controller
                 $em->flush();
 
                 return $this->redirect($this->generateUrl('tag_show', array('id' => $entity->getId())));
-                
+
             }
         }
 
@@ -114,7 +114,7 @@ class TagController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('FacebesSnipperBundle:Tag')->find($id);
+        $entity = $em->getRepository('FacebesSnippetBundle:Tag')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Tag entity.');
@@ -135,13 +135,13 @@ class TagController extends Controller
      *
      * @Route("/{id}/update", name="tag_update")
      * @Method("post")
-     * @Template("FacebesSnipperBundle:Tag:edit.html.twig")
+     * @Template("FacebesSnippetBundle:Tag:edit.html.twig")
      */
     public function updateAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('FacebesSnipperBundle:Tag')->find($id);
+        $entity = $em->getRepository('FacebesSnippetBundle:Tag')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Tag entity.');
@@ -187,7 +187,7 @@ class TagController extends Controller
 
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getEntityManager();
-                $entity = $em->getRepository('FacebesSnipperBundle:Tag')->find($id);
+                $entity = $em->getRepository('FacebesSnippetBundle:Tag')->find($id);
 
                 if (!$entity) {
                     throw $this->createNotFoundException('Unable to find Tag entity.');
