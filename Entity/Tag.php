@@ -141,10 +141,21 @@ class Tag
     /**
      * Get children
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection $children 
      */
     public function getChildren()
     {
         return $this->children;
     }
+
+    /**
+     * Has children
+     *
+     * @return bool $haschildren
+     */
+    public function hasChildren()
+    {
+	return !$this->children->isEmpty();
+    }
+
 }
