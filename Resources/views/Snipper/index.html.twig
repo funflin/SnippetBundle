@@ -3,25 +3,27 @@
 <table class="records_list">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Name</th>
             <th>Description</th>
-            <th>Code</th>
             <th>Createdat</th>
             <th>Updatedat</th>
+	    <th>Tags</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('snipper_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.name }}</td>
+            <td><a href="{{ path('snipper_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
             <td>{{ entity.description }}</td>
-            <td>{{ entity.code }}</td>
-            <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.createdAt|date('Y-m-d') }}</td>
             <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
-            <td>
+             <td>
+	    {% for tag in entity.tags %}
+             <a href="{{ path('tag_show', { 'id': tag.id }) }}">{{ tag.name }}</a>
+	    {% endfor %}
+            </td>
+	    <td>
                 <ul>
                     <li>
                         <a href="{{ path('snipper_show', { 'id': entity.id }) }}">show</a>
@@ -40,6 +42,11 @@
     <li>
         <a href="{{ path('snipper_new') }}">
             Create a new entry
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('tag') }}">
+            Listado de tags
         </a>
     </li>
 </ul>

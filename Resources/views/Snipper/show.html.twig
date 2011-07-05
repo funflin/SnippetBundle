@@ -1,19 +1,32 @@
+<head>
+<link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
+<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushCpp.js" type="text/javascript"></script>
+</head>
+<body>
 <h1>Snipper</h1>
 
 <table class="record_properties">
     <tbody>
         <tr>
-            <th>Id</th>                <td>{{ entity.id }}</td>        </tr>
-        <tr>
             <th>Name</th>                <td>{{ entity.name }}</td>        </tr>
         <tr>
             <th>Description</th>                <td>{{ entity.description }}</td>        </tr>
         <tr>
-            <th>Code</th>                <td>{{ entity.code }}</td>        </tr>
+            <th>Code</th>                <td><pre class="brush: cpp">{{ entity.code }}</pre></td>        </tr>
         <tr>
-            <th>Createdat</th>                <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>        </tr>
+            <th>Createdat</th>                <td>{{ entity.createdAt|date('Y-m-d H:i') }}</td>        </tr>
         <tr>
-            <th>Updatedat</th>                <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>        </tr>
+            <th>Updatedat</th>                <td>{{ entity.updatedAt|date('Y-m-d H:i') }}</td>        </tr>
+
+<tr>
+<th>Tags</th>
+             <td>
+	    {% for tag in entity.tags %}
+             <a href="{{ path('tag_show', { 'id': tag.id }) }}">{{ tag.name }}</a>
+	    {% endfor %}
+            </td>
+</tr>
     </tbody>
 </table>
 
@@ -35,3 +48,9 @@
         </form>
     </li>
 </ul>
+
+<script type="text/javascript">
+SyntaxHighlighter.defaults['toolbar']=false;
+SyntaxHighlighter.all()
+</script>
+</body>
