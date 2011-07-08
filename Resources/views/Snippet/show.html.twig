@@ -1,21 +1,29 @@
 {% extends 'FacebesSnippetBundle::layout.html.twig' %}
 
 {% block title %} Super fun Snippet {% endblock %}
-{% block head %}
 
+
+{% block stylesheets %}
+    <script src="{{ asset('bundles/facebessnippet/js/syntaxhighlighter/xregexp.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/facebessnippet/js/syntaxhighlighter/shCore.js') }}" type="text/javascript" ></script>
+    <script src="{{ asset('bundles/facebessnippet/js/syntaxhighlighter/shAutoloader.js') }}" type="text/javascript"></script>
+
+    <link href="{{ asset('bundles/facebessnippet/css/syntaxhighlighter/shCore.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/facebessnippet/css/syntaxhighlighter/shThemeRDark.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
+
 
 {% block sidebar %}
 <a href="google.es">Super</a>
 {{ parent() }}
 {% endblock %}
 
-{% block body %}
-<h1>Snippet</h1>
 
+
+{% block contenido %}
 <table class="record_properties">
     <tbody> 
-        <tr>
+       <tr>
             <th>Name</th>                <td>{{ entity.name }}</td>        
 </tr>
         <tr>
@@ -37,7 +45,9 @@
 </tr>
     </tbody>
 </table>
+{% endblock %}
 
+{% block lateral %}
 <ul class="record_actions">
     <li>
         <a href="{{ path('snippet') }}">
@@ -56,4 +66,16 @@
         </form>
     </li>
 </ul>
+{% endblock %}
+
+
+
+{% block javascripts %}    
+    <script type="text/javascript">
+      SyntaxHighlighter.autoloader(
+      'js jscript javascript {{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushJScript.js') }}',
+      'cpp c arduino         {{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushCpp.js') }}'
+      );
+      SyntaxHighlighter.all();
+    </script>
 {% endblock %}

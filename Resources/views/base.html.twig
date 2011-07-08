@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+	
+{#	<link href="{{ asset('bundles/facebessnippet/css/reset.css') }}" rel="stylesheet" type="text/css" /> #}
+	<link href="{{ asset('bundles/facebessnippet/css/grid.960.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('bundles/facebessnippet/css/main.css') }}" rel="stylesheet" type="text/css" />
+        {% block stylesheets %}{% endblock %}
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+
+    <body>
+      <header>
+	<div class="container_12">
+	  {% block header %}{% endblock %}
+	</div>
+      </header>
+      <div class="container_12">
+        {% block body %}{% endblock %}
+	<footer>
+	  {% block footer %}
+	  <a href='#'>CopyLeft {{ 'now' | date('Y-m') }} Facebes </a>
+	  {% endblock %}
+	</footer>
+      </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
