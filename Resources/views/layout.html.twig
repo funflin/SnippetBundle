@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}Test Application{% endblock %}</title>
+
+    <script src="{{ asset('bundles/facebessnippet/js/syntaxhighlighter/xregexp.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/facebessnippet/js/syntaxhighlighter/shCore.js') }}" type="text/javascript" ></script>
+    <script src="{{ asset('bundles/facebessnippet/js/syntaxhighlighter/shAutoloader.js') }}" type="text/javascript"></script>
+
+    <link href="{{ asset('bundles/facebessnippet/css/syntaxhighlighter/shCore.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/facebessnippet/css/syntaxhighlighter/shThemeRDark.css') }}" rel="stylesheet" type="text/css" />
+
+    {% block head %}{% endblock %}        
+
+  </head>
+  <body>
+    <div id="sidebar">
+      {% block sidebar %}
+      <ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog">Blog</a></li>
+      </ul>
+      {% endblock %}
+    </div>
+    <div id="content">
+      {% block body %}{% endblock %}
+    </div>
+    
+    <script type="text/javascript">
+      SyntaxHighlighter.autoloader(
+      'js jscript javascript {{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushJScript.js') }}',
+      'cpp c arduino         {{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushCpp.js') }}'
+      );
+      SyntaxHighlighter.all();
+    </script>
+
+  </body>
+</html>
