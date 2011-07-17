@@ -1,0 +1,21 @@
+{% extends 'FacebesSnippetBundle::layout.html.twig' %}
+
+{% block pagesubtitle %} Language creation {% endblock %} 
+{% block contenido %}
+
+<form action="{{ path('language_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+{% endblock %}
+{% block lateral %}
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('language') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

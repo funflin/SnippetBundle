@@ -28,20 +28,24 @@
         <tr>
             <th>Description</th>                <td>{{ entity.description }}</td>        </tr>
         <tr>
-            <th>Code</th>                <td><pre class="brush: cpp">{{ entity.code }}</pre></td>        </tr>
+            <th>Code</th>                <td><pre class="brush: {% if entity.language is empty %} text {% else %} {{ entity.language.syntax }} {% endif %}">{{ entity.code }}</pre></td>        </tr>
         <tr>
             <th>Createdat</th>                <td>{{ entity.createdAt|date('Y-m-d H:i') }}</td>        </tr>
         <tr>
             <th>Updatedat</th>                <td>{{ entity.updatedAt|date('Y-m-d H:i') }}</td>        </tr>
+	    
+	    {% if entity.language is not empty %}
+	<tr><th>Language</th><td>{{ entity.language }}</td> </tr>
+	    {% endif %}
 
-<tr>
-<th>Tags</th>
-             <td>
+	<tr>
+	  <th>Tags</th>
+	  <td>
 	    {% for tag in entity.tags %}
              <a href="{{ path('tag_show', { 'id': tag.id }) }}">{{ tag.name }}</a>
 	    {% endfor %}
             </td>
-</tr>
+	</tr>
     </tbody>
 </table>
 {% endblock %}
@@ -68,13 +72,35 @@
 {% endblock %}
 
 
-
-{% block javascripts %}    
-    <script type="text/javascript">
-      SyntaxHighlighter.autoloader(
-      'js jscript javascript {{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushJScript.js') }}',
-      'cpp c arduino         {{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushCpp.js') }}'
-      );
-      SyntaxHighlighter.all();
-    </script>
+{% block javascripts %}
+<script type="text/javascript">
+SyntaxHighlighter.autoloader(
+	'applescript			{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushAppleScript.js')}}',
+	'actionscript3 as3		{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushAS3.js')}}',
+	'bash shell			{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushBash.js')}}',
+	'coldfusion cf			{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushColdFusion.js')}}',
+	'cpp c arduino			{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushCpp.js')}}',
+	'c# c-sharp csharp		{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushCSharp.js')}}',
+	'css				{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushCss.js')}}',
+	'delphi pascal			{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushDelphi.js')}}',
+	'diff patch pas			{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushDiff.js')}}',
+	'erl erlang			{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushErlang.js')}}',
+	'groovy				{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushGroovy.js')}}',
+	'java				{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushJava.js')}}',
+	'jfx javafx			{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushJavaFX.js')}}',
+	'js jscript javascript		{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushJScript.js')}}',
+	'perl pl			{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushPerl.js')}}',
+	'php				{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushPhp.js')}}',
+	'text plain			{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushPlain.js')}}',
+	'py python			{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushPython.js')}}',
+	'powershell ps posh		{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushPowerShell.js')}}',
+	'ruby rails ror rb		{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushRuby.js')}}',
+	'sass scss			{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushSass.js')}}',
+	'scala				{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushScala.js')}}',
+	'sql				{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushSql.js')}}',
+	'vb vbnet			{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushVb.js')}}',
+	'xml xhtml xslt html		{{ asset('bundles/facebessnippet/js/syntaxhighlighter/scripts/shBrushXml.js')}}'
+);
+SyntaxHighlighter.all();
+</script>
 {% endblock %}

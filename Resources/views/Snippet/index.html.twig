@@ -10,17 +10,19 @@
             <th>Description</th>
             <th>Createdat</th>
             <th>Updatedat</th>
+	    <th>Language</th>
 	    <th>Tags</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
-        <tr class="{{ loop.index is even ? 'par':'impar' }}">
+         <tr class="{{ cycle(['par','impar'],loop.index) }}">
             <td><a href="{{ path('snippet_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
             <td>{{ entity.description }}</td>
             <td>{{ entity.createdAt|date('Y-m-d') }}</td>
             <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.language }}</td>
              <td>
 	    {% for tag in entity.tags %}
              <a href="{{ path('tag_show', { 'id': tag.id }) }}">{{ tag.name }}</a>
@@ -41,11 +43,6 @@
     <li>
         <a href="{{ path('snippet_new') }}">
             Create a new entry
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('tag') }}">
-            Listado de tags
         </a>
     </li>
 </ul>

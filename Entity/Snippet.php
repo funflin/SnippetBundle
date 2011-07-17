@@ -64,7 +64,10 @@ class Snippet
      */
     protected $updatedAt;
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="Language")
+     */
+    private $language;
 
     /**
      * Get id
@@ -197,4 +200,13 @@ class Snippet
 	$this->createdAt = new \DateTime();
     }
 
+    public function getLanguage()
+    {
+      return $this->language;
+    }
+    
+    public function setLanguage($idLang)
+    {
+      $this->language = $idLang;
+    }
 }

@@ -1,22 +1,25 @@
 {% extends 'FacebesSnippetBundle::layout.html.twig' %}
 
-{% block pagesubtitle %} List Tags {% endblock %} 
+{% block pagesubtitle %} Language List {% endblock %} 
 {% block contenido %}
+
 <table class="records_list">
     <thead>
         <tr>
             <th>Name</th>
-            <th>Description</th>
+            <th>Syntax</th>
+            <th>Icon</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
-         <tr class="{{ cycle(['par','impar'],loop.index) }}">
-            <td><a href="{{ path('tag_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
-            <td>{{ entity.description }}</td>
+    <tr class="{{ cycle(['par','impar'],loop.index) }}">
+            <td><a href="{{ path('language_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+            <td>{{ entity.syntax }}</td>
+            <td>{{ entity.icon }}</td>
             <td>
-	      <a href="{{ path('tag_edit', { 'id': entity.id }) }}">edit</a>
+	      <a href="{{ path('language_edit', { 'id': entity.id }) }}">edit</a>
             </td>
         </tr>
     {% endfor %}
@@ -26,7 +29,7 @@
 {% block lateral %}
 <ul>
     <li>
-        <a href="{{ path('tag_new') }}">
+        <a href="{{ path('language_new') }}">
             Create a new entry
         </a>
     </li>
