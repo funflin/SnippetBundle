@@ -1,21 +1,15 @@
 {% extends "FacebesSnippetBundle::base.html.twig" %}
-{% block title %}Test Application{% endblock %}
+{% block title %}Snippet Application{% endblock %}
 
 {% block header %}
-    <nav id="sidebar" clas="grid_8">
-      {% block sidebar %}
-      <ul>
-	<li><a href="/">Home</a></li>
-	<li><a href="/blog">Blog</a></li>
-      </ul>
-      {% endblock %}
-    </nav>
+<h1 class="grid_6" id="title">{% block pagetitle %}Snippet{% endblock %}</h1>
 {% endblock %}
 
 {% block body %}
-<h1 class="grid_6">Snippet</h1>
+<div class="clear"></div>
+<h2 class="grid_10" id="subtitle">{% block pagesubtitle %}La aplicacion{% endblock %}</h2>
 
-<div id="principal"  class="grid_9">
+<div id="principal"  class="grid_10">
   {% block contenido %} {% endblock %}
 </div>
 <div id="lateral" class="grid_2">

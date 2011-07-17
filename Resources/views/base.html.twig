@@ -12,16 +12,28 @@
     </head>
 
     <body>
-      <header>
-	<div class="container_12">
+      <header class="container_12">
 	  {% block header %}{% endblock %}
-	</div>
+      
+      {% block nav %}
+      <nav id="sidebar" class="grid_4 prefix_2">
+	<ul>
+	  {% block sidebar %}
+	  <li><a href="/">Home</a></li>
+	  <li><a href="{{ path('tag') }}">Tags</a></li>
+	  <li><a href="{{ path('snippet') }}">Snippet</a></li>
+	  {% endblock %}
+	</ul>
+      </nav>
+      {% endblock %}
       </header>
+
       <div class="container_12">
         {% block body %}{% endblock %}
-	<footer>
+      
+	<footer class="grid_12">
 	  {% block footer %}
-	  <a href='#'>CopyLeft {{ 'now' | date('Y-m') }} Facebes </a>
+	  CopyLeft {{ 'now' | date('Y-m') }} by Facebes
 	  {% endblock %}
 	</footer>
       </div>

@@ -1,5 +1,7 @@
-<h1>Tag list</h1>
+{% extends 'FacebesSnippetBundle::layout.html.twig' %}
 
+{% block pagesubtitle %} List Tags {% endblock %} 
+{% block contenido %}
 <table class="records_list">
     <thead>
         <tr>
@@ -10,24 +12,18 @@
     </thead>
     <tbody>
     {% for entity in entities %}
-        <tr>
+        <tr class="{{ loop.index is even ? 'par':'impar' }}">
             <td><a href="{{ path('tag_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
             <td>{{ entity.description }}</td>
             <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('tag_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('tag_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+	      <a href="{{ path('tag_edit', { 'id': entity.id }) }}">edit</a>
             </td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
-
+{% endblock %}
+{% block lateral %}
 <ul>
     <li>
         <a href="{{ path('tag_new') }}">
@@ -40,3 +36,4 @@
         </a>
     </li>
 </ul>
+{% endblock %}

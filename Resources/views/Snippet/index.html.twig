@@ -1,5 +1,8 @@
-<h1>Snippet list</h1>
+{% extends 'FacebesSnippetBundle::layout.html.twig' %}
 
+{% block pagesubtitle %} Listado de Snippets {% endblock %} 
+
+{% block contenido %}
 <table class="records_list">
     <thead>
         <tr>
@@ -13,7 +16,7 @@
     </thead>
     <tbody>
     {% for entity in entities %}
-        <tr>
+        <tr class="{{ loop.index is even ? 'par':'impar' }}">
             <td><a href="{{ path('snippet_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
             <td>{{ entity.description }}</td>
             <td>{{ entity.createdAt|date('Y-m-d') }}</td>
@@ -24,20 +27,16 @@
 	    {% endfor %}
             </td>
 	    <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('snippet_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('snippet_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+              <a href="{{ path('snippet_edit', { 'id': entity.id }) }}">edit</a>
             </td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
+{% endblock %}
 
+
+{% block lateral %}
 <ul>
     <li>
         <a href="{{ path('snippet_new') }}">
@@ -50,3 +49,5 @@
         </a>
     </li>
 </ul>
+
+{% endblock %}

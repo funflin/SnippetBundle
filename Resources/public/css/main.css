@@ -1,0 +1,85 @@
+body {
+    background: #123;
+    padding-bottom: 20px;
+}
+
+h1#title {
+    color: white;
+    text-align: center;
+    font-size: 3em;
+}
+
+h2#subtitle
+{
+    text-align: center;
+}
+nav {
+    margin-top: 15px;
+}
+
+nav ul, nav li {
+    list-style: none;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    float: left;
+}
+
+nav a {
+    text-decoration: none;
+    display: block;
+    padding: 3px 10px;
+    text-align: center;
+    border: 1px solid #ACCFE8;
+    color: #3366cc;
+    background: #f0f7fc;
+    border-width: 1px 1px 1px 0px;
+}
+
+nav li:first-child a{
+    border: 1px solid #ACCFE8;
+}
+
+nav a:hover {
+    background: #DBEBF6;
+}
+
+footer{
+    margin-top: 50px;
+    text-align: right;
+    color: white;
+}
+
+body{
+     color:white;
+}
+
+a {
+    text-decoration: none;
+    color:white;
+}
+
+label{
+    margin-right: 150px;
+}
+
+.par{
+    background: #4d6985;
+}
+
+.impar{
+    background: #2d5a87;
+}
+
+.impar tr:hover{
+    background: #8785a2d;
+}
+
+.records_list{
+    width: 100%;
+}

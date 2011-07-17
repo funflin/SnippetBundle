@@ -1,4 +1,7 @@
-<h1>Tag</h1>
+{% extends 'FacebesSnippetBundle::layout.html.twig' %}
+
+{% block pagesubtitle %} Show Tags {% endblock %} 
+{% block contenido %}
 
 <table class="record_properties">
     <tbody>
@@ -27,6 +30,8 @@
 {% endif %}
     </tbody>
 </table>
+{% endblock %}
+{% block lateral %}
 <ul class="record_actions">
     <li>
         <a href="{{ path('tag') }}">
@@ -45,3 +50,4 @@
         </form>
     </li>
 </ul>
+{% endblock %}

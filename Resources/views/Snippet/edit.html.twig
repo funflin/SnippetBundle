@@ -1,12 +1,17 @@
-<h1>Snippet edit</h1>
+{% extends 'FacebesSnippetBundle::layout.html.twig' %}
 
+{% block title %} Edit Snippet {% endblock %}
+{% block pagesubtitle %}Edit Snippet {% endblock %}
+
+{% block contenido %}
 <form action="{{ path('snippet_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     {{ form_widget(edit_form) }}
     <p>
         <button type="submit">Edit</button>
     </p>
 </form>
-
+{% endblock %}
+{% block lateral %}
 <ul class="record_actions">
     <li>
         <a href="{{ path('snippet') }}">
@@ -20,3 +25,4 @@
         </form>
     </li>
 </ul>
+{% endblock %}
