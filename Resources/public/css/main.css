@@ -1,20 +1,24 @@
 body {
-    background: #123;
+    /*background: #123;*/
+    background: #afb1b4;
     padding-bottom: 20px;
 }
 
-h1#title {
+#title {
     color: white;
     text-align: center;
     font-size: 3em;
 }
 
-h2#subtitle
+#subtitle
 {
     text-align: center;
+    font-size: 1.5em; 
 }
-nav {
-    margin-top: 15px;
+
+
+nav {    
+    margin: 20px;
 }
 
 nav ul, nav li {
@@ -28,25 +32,20 @@ nav ul {
 
 nav li {
     float: left;
+    /*box-shadow:0 0px 5px rgba(0,0,0,0.2);*/
+    margin-left: 10px;
 }
 
 nav a {
     text-decoration: none;
     display: block;
-    padding: 3px 10px;
-    text-align: center;
-    border: 1px solid #ACCFE8;
-    color: #3366cc;
-    background: #f0f7fc;
+    text-align: center;    
+    background: transparent;
     border-width: 1px 1px 1px 0px;
 }
 
-nav li:first-child a{
-    border: 1px solid #ACCFE8;
-}
-
 nav a:hover {
-    background: #DBEBF6;
+    color: gray;   
 }
 
 footer{
@@ -56,7 +55,6 @@ footer{
 }
 
 body{
-     color:white;
 }
 
 a {
@@ -83,3 +81,93 @@ label{
 .records_list{
     width: 100%;
 }
+
+#menu_lateral ul, #menu_lateral il
+{
+    list-style: none;
+    color: black;
+}
+
+#menu_lateral a {
+    text-decoration: none;
+    display: block;
+    text-align: center;    
+    background: transparent;
+    color: black;
+}
+
+
+/*-------------------------------------------------------------
+	GRID
+--------------------------------------------------------------*/
+
+.container {
+	margin:0 auto;
+	padding:40px 0 0 0;
+	width:100%;        
+	background: transparent; }
+ 
+.wrapper {
+        height: auto;
+	margin:0 auto;
+	padding:0;
+	/*width: 970px;*/
+	background:#fff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	border-radius:10px;
+	-moz-box-shadow: 0 0px 5px rgba(0,0,0,0.3);
+	-webkit-box-shadow: 0 0px 5px rgba(0,0,0,0.3);
+	box-shadow: 0 0px 5px rgba(0,0,0,0.3); }
+ 
+.header {
+	position: relative;
+	margin:0 auto;
+	padding:0 30px;
+	
+	/*width: 910px;*/
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-khtml-border-radius-topleft: 10px;
+	-khtml-border-radius-topright: 10px;
+	border-top-right-radius:10px;
+	border-top-left-radius:10px; 
+        overflow: auto;
+        background-color: #D13521;        
+}
+
+.sub-header {
+	display:block;
+	margin: 0;
+	padding:0;
+	/*height:8px;*/
+	/*width: 970px;*/	
+        background-color: #123;
+        overflow: auto;
+        color: whitesmoke;
+}
+
+.content {
+	padding:0 0 30px 0;
+        height: auto;
+        overflow: auto;
+/*	width: 970px;*/
+}
+
+.content-home {
+	margin:0 auto;
+	padding:0px; 
+        height: auto;
+}
+
+.footer {
+	margin: 0 auto;
+	padding:20px 0;
+	/*width: 970px;*/
+	font-size:0.9em ;
+	text-align:center; }
+
+	
