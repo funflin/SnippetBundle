@@ -3,41 +3,72 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-	
-{#	<link href="{{ asset('bundles/facebessnippet/css/reset.css') }}" rel="stylesheet" type="text/css" /> #}
-	<link href="{{ asset('bundles/facebessnippet/css/grid.960.css') }}" rel="stylesheet" type="text/css" />
+
+        <link href="{{ asset('bundles/facebessnippet/css/grid.960.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('bundles/facebessnippet/css/main.css') }}" rel="stylesheet" type="text/css" />
+
         {% block stylesheets %}{% endblock %}
+
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
-
+    
     <body>
-      <header class="container_12">
-	  {% block header %}{% endblock %}
-      
-      {% block nav %}
-      <nav id="sidebar" class="grid_4 prefix_2">
-	<ul>
-	  {% block sidebar %}
-	  <li><a href="/">Home</a></li>
-	  <li><a href="{{ path('tag') }}">Tags</a></li>
-	  <li><a href="{{ path('snippet') }}">Snippet</a></li>
-	  <li><a href="{{ path('language') }}">Language</a></li>
-	  {% endblock %}
-	</ul>
-      </nav>
-      {% endblock %}
-      </header>
+        <div class="container">
+            <div class="wrapper container_12">	
+                <!-- header -->
+                <div class="header">
+                        {% block header %}
+                        <div id="title" class="grid_5">{% block pagetitle %}{% endblock %}</div>
+                        {% endblock %}
+                    <nav class="grid_6">
+                       {% block nav %}
+                       <ul>
+	                  {% block sidebar %}
+                                <li><a href="/">Home</a></li>
+                                <li><a href="{{ path('tag') }}">Tags</a></li>
+                                <li><a href="{{ path('snippet') }}">Snippet</a></li>
+                                <li><a href="{{ path('language') }}">Language</a></li>
+	                    {% endblock %}
+                        </ul>                    
+                   {% endblock %}           
+                    </nav>		
+                </div> <!-- // header -->
+                 <div class="clear"></div>
 
-      <div class="container_12">
-        {% block body %}{% endblock %}
-      
-	<footer class="grid_12">
-	  {% block footer %}
-	  CopyLeft {{ 'now' | date('Y-m') }} by Facebes
-	  {% endblock %}
-	</footer>
-      </div>
-        {% block javascripts %}{% endblock %}
+                <!-- content -->                
+                <div class="content">
+                    <!-- slideshow -->					
+                    <div class="sub-header">
+                        {% block subheader %}
+                            Subtitulos
+                        {% endblock %}      
+                        </div>              
+                    <div class="clear"></div>
+                    <div class="content-home">
+                    {% block principal %}{% endblock %}
+                </div>
+                </div>
+                
+                <!-- // slideshow -->
+                <!-- 3 cols -->
+                
+                <!-- // 3 cols -->                                    
+            </div>
+            <!-- // content -->                                
+        </div>
+                    <div class="clear"></div>
+        <!-- // wrapper -->                            
+        <!-- footer -->
+        <!-- <div class="clear"></div> -->
+        <div class="footer">
+           {% block footer %}
+                 CopyLeft {{ 'now' | date('Y-m') }} by Facebes
+	   {% endblock %}
+        </div>
+        <!-- // footer -->                            
+        </div>
+        <!-- // container -->                            
+
+{% block javascripts %}{% endblock %}
     </body>
 </html>
