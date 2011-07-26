@@ -3,12 +3,15 @@
 namespace Facebes\SnippetBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 /**
  * Facebes\SnippetBundle\Entity\Language
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Language
 {
@@ -46,7 +49,7 @@ class Language
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -66,7 +69,7 @@ class Language
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -86,7 +89,7 @@ class Language
     /**
      * Get syntax
      *
-     * @return string 
+     * @return string
      */
     public function getSyntax()
     {
@@ -99,14 +102,17 @@ class Language
      * @param string $icon
      */
     public function setIcon($icon)
-    {
-        $this->icon = $icon;
+    {    
+        $dest =  md5(uniqid()).'.'.$icon->guessExtension();
+        $icon->move($this->getUploadRootDir(), $dest);
+        
+        $this->icon = $dest;
     }
 
     /**
      * Get icon
      *
-     * @return string 
+     * @return string
      */
     public function getIcon()
     {
@@ -118,4 +124,57 @@ class Language
       return $this->getName();
     }
 
+
+    public function getFullPath()
+    {
+      return null === $this->icon ? null : $this->getUploadRootDir().'/'.$this->icon;
+    }
+
+    public function getViewPath()
+    {
+        return null === $this->icon ? null : 'uploads/languageicons/'.$this->icon;
+    }
+    public function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/uploads/languageicons';
+        return __DIR__.'/../../../../web/uploads/languageicons';
+    }
+//
+//    /**
+//     * @ORM\PrePersist()
+//     */
+//    public function preUpload()
+//    {       
+//        if (NULL !== $this->icon )
+//        {
+//            return $this->setIcon($this->icon->guessExtension());
+//        }
+//    }
+//        
+//     /**
+//     * @ORM\PostPersist()
+//     */
+//    public function upload()
+//    {
+//        if (NULL === $this->icon )
+//        {
+//            return;
+//        }
+//        echo "hola";
+//        $this->icon->Move($this->getUploadRootDir(), $this->id.$this->icon->guessExtension());
+//        unset ($this->icon);
+//    }
+//
+//     /**
+//     * @ORM\PostRemove()
+//     */
+//    public function removeUpload()
+//    {
+//        if($file = $this->getFullPath())
+//        {
+//            unlink($file);
+//        }
+//    }
+    
+    
 }

@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Facebes\SnippetBundle\Entity\Language;
 use Facebes\SnippetBundle\Form\LanguageType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Language controller.
@@ -89,12 +90,35 @@ class LanguageController extends Controller
             $form->bindRequest($request);
 
             if ($form->isValid()) {
+                
+   //             $files = $request->files->get($form->getName());
+     //           $uploadedFile = $files['icon'];
+                //echo '<pre>';
+//                print_r($uploadedFile);
+//                
+//                print_r($uploadedFile->getfileName());
+//                print_r($uploadedFile->getpathName());
+//                print_r($uploadedFile->getSize());
+//                print_r($uploadedFile->guessExtension());
+//                print_r($uploadedFile->getClientOriginalName());                
+                
+//                $uploadedFile->getPath();
+//                $uploadedFile->getOriginalName();
+//                $uploadedFile->getMimeType();
+                  
+                //$uploadedFile->Move($_SERVER['DOCUMENT_ROOT']."/uploads", $uploadedFile->getClientOriginalName());
+                
+               // print_r($entity);
+               
                 $em = $this->getDoctrine()->getEntityManager();
+                                
+                //$entity->upload();
                 $em->persist($entity);
                 $em->flush();
+               $this->get('session')->setFlash('notice', 'The file is uploaded!');
 
                 return $this->redirect($this->generateUrl('language_show', array('id' => $entity->getId())));
-                
+
             }
         }
 
@@ -208,4 +232,32 @@ class LanguageController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * @Template()
+     */
+    /*    public function uploadAction()
+    {
+      $document = new Document();
+      $form = $this->createFormBuilder($document)
+        ->add('name')
+        ->add('syntax')
+        ->add('icon')
+        ->getForm();
+
+      if($this->getRequest()->getMethod() === 'POST'){
+        $form->bindRequest($this->getRequest());
+        if($form->isValid()){
+          $em = $this->getDoctrine()->getEntityManager();
+
+          $em->persist($document);
+          $em->flush();
+
+          $this->redirect($this->generateUrl('Language'));
+        }
+      }
+      return array('form' => $form->createView());
+    }
+    */
+
 }
